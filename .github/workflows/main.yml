@@ -7,7 +7,7 @@ on:
     - main
 
 env:
-  AZURE_WEBAPP_NAME: current-time-service
+  AZURE_WEBAPP_NAME: current-time-test-service
   AZURE_WEBAPP_PACKAGE_PATH: "./publish"
 
 jobs:
@@ -30,5 +30,12 @@ jobs:
         
       - name: Publish
         run: dotnet publish ./CurrentTimeService.sln --configuration Release --no-build --output '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}'
+
+      - name: Deployment
+        uses: azure/webapps-deploy@v2
+        with: 
+          app-name: 'current-time-test-service'
+          publish-profile: 
+          package: 
         
     
