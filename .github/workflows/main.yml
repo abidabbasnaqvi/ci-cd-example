@@ -35,7 +35,7 @@ jobs:
         uses: azure/webapps-deploy@v2
         with: 
           app-name: 'current-time-test-service'
-          publish-profile: 
-          package: 
+          publish-profile: ${{secrets.AZURE_PUBLISH_PROFILE}}
+          package: "${{env.AZURE_WEBAPP_PACKAGE_PATH}}"
         
     
